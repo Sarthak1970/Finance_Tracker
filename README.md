@@ -9,7 +9,7 @@ A full-stack personal finance management web application built with:
 
 ## 🌐 Live Demo
 
-> **Demo**: [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)  
+> **Demo**: [https://finance-tracker-two-nu.vercel.app/](https://finance-tracker-two-nu.vercel.app/)
 ---
 
 ## 🧠 Features
