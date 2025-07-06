@@ -27,7 +27,7 @@ export default function Home() {
     try {
       setLoading(true);
       const res = await fetch(
-        `http://localhost:8080/transactions?month=${month}&year=${year}`
+        `https://finance-tracker-backend-ucrl.onrender.com/transactions?month=${month}&year=${year}`
       );
       const data = await res.json();
 
@@ -52,7 +52,7 @@ export default function Home() {
 
   const handleDelete = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:8080/transactions?id=${id}`, {
+      const res = await fetch(`https://finance-tracker-backend-ucrl.onrender.com/transactions?id=${id}`, {
         method: 'DELETE',
       });
       if (res.ok) {
