@@ -33,7 +33,7 @@ export default function UpdateTransactionPage() {
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-        const res = await fetch(`http://localhost:8080/transactions/${id}`)
+        const res = await fetch(`https://finance-tracker-backend-ucrl.onrender.com/transactions/${id}`)
         const data = await res.json()
 
         if (!res.ok) throw new Error(data.message || 'Failed to load')
@@ -67,7 +67,7 @@ export default function UpdateTransactionPage() {
     setError('')
 
     try {
-      const res = await fetch(`http://localhost:8080/transactions?id=${id}`, {
+      const res = await fetch(`https://finance-tracker-backend-ucrl.onrender.com/transactions?id=${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
