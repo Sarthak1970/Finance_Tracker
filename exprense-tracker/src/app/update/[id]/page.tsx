@@ -12,6 +12,7 @@ import {
   SelectContent,
   SelectItem,
 } from '@/components/ui/select'
+import { AuroraBackground } from '@/components/ui/aurora-background' 
 
 export default function UpdateTransactionPage() {
   const params = useParams()
@@ -92,83 +93,85 @@ export default function UpdateTransactionPage() {
   }
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow text-white">
-      <h1 className="text-3xl font-bold mb-6 text-center">Update Transaction</h1>
+    <AuroraBackground className="text-white"> {/* ✅ Aurora wrapper */}
+      <div className="relative z-10 w-full max-w-xl mx-auto p-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl shadow text-white">
+        <h1 className="text-3xl font-bold mb-6 text-center">Update Transaction</h1>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div>
-          <Label className="text-white">Amount</Label>
-          <Input
-            name="amount"
-            type="number"
-            step="0.01"
-            value={form.amount}
-            onChange={handleChange}
-            required
-            className="bg-white/20 text-white placeholder-white/60 border-white/30"
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-5">
+          <div>
+            <Label className="text-white">Amount</Label>
+            <Input
+              name="amount"
+              type="number"
+              step="0.01"
+              value={form.amount}
+              onChange={handleChange}
+              required
+              className="bg-white/20 text-white placeholder-white/60 border-white/30"
+            />
+          </div>
 
-        <div>
-          <Label className="text-white">Description</Label>
-          <Input
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-            required
-            className="bg-white/20 text-white placeholder-white/60 border-white/30"
-          />
-        </div>
+          <div>
+            <Label className="text-white">Description</Label>
+            <Input
+              name="description"
+              value={form.description}
+              onChange={handleChange}
+              required
+              className="bg-white/20 text-white placeholder-white/60 border-white/30"
+            />
+          </div>
 
-        <div>
-          <Label className="text-white">Date</Label>
-          <Input
-            name="date"
-            type="date"
-            value={form.date}
-            onChange={handleChange}
-            required
-            className="bg-white/20 text-white border-white/30"
-          />
-        </div>
+          <div>
+            <Label className="text-white">Date</Label>
+            <Input
+              name="date"
+              type="date"
+              value={form.date}
+              onChange={handleChange}
+              required
+              className="bg-white/20 text-white border-white/30"
+            />
+          </div>
 
-        <div>
-          <Label className="text-white">Category</Label>
-          <Input
-            name="category"
-            value={form.category}
-            onChange={handleChange}
-            required
-            className="bg-white/20 text-white placeholder-white/60 border-white/30"
-          />
-        </div>
+          <div>
+            <Label className="text-white">Category</Label>
+            <Input
+              name="category"
+              value={form.category}
+              onChange={handleChange}
+              required
+              className="bg-white/20 text-white placeholder-white/60 border-white/30"
+            />
+          </div>
 
-        <div>
-          <Label className="text-white">Type</Label>
-          <Select
-            value={form.type}
-            onValueChange={(value) => setForm({ ...form, type: value })}
+          <div>
+            <Label className="text-white">Type</Label>
+            <Select
+              value={form.type}
+              onValueChange={(value) => setForm({ ...form, type: value })}
+            >
+              <SelectTrigger className="bg-white/20 text-white border-white/30">
+                <SelectValue placeholder="Select type" />
+              </SelectTrigger>
+              <SelectContent className="bg-white/20 text-white">
+                <SelectItem value="expense">Expense</SelectItem>
+                <SelectItem value="income">Income</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
+          {error && <div className="text-red-400 text-sm">{error}</div>}
+
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white"
           >
-            <SelectTrigger className="bg-white/20 text-white border-white/30">
-              <SelectValue placeholder="Select type" />
-            </SelectTrigger>
-            <SelectContent className="bg-white/20 text-white">
-              <SelectItem value="expense">Expense</SelectItem>
-              <SelectItem value="income">Income</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {error && <div className="text-red-400 text-sm">{error}</div>}
-
-        <Button
-          type="submit"
-          disabled={loading}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-        >
-          {loading ? 'Updating...' : 'Update Transaction'}
-        </Button>
-      </form>
-    </div>
+            {loading ? 'Updating...' : 'Update Transaction'}
+          </Button>
+        </form>
+      </div>
+    </AuroraBackground>
   )
 }

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { AuroraBackground } from '@/components/ui/aurora-background';
 import { motion } from 'framer-motion';
+import MonthlyExpenseChart from '@/components/MonthlyExpenseChart';
 
 type Transaction = {
   id: string;
@@ -81,6 +82,8 @@ export default function Home() {
             <h1 className="text-4xl font-bold mb-6 text-center text-white drop-shadow-lg">
               Personal Finance Dashboard
             </h1>
+
+            {/* Filter Form */}
             <div className="flex gap-4 mb-6 py-2">
               <select
                 value={month}
@@ -117,6 +120,15 @@ export default function Home() {
               </Link>
             </div>
 
+            {/* Monthly Chart */}
+            <div className="mt-8 mb-12 bg-white/5 backdrop-blur border border-white/20 rounded p-4 shadow">
+              <h2 className="text-xl font-semibold mb-4 text-white">
+                Monthly Expense Chart
+              </h2>
+              <MonthlyExpenseChart transactions={transactions} />
+            </div>
+
+            {/* Transactions List */}
             {loading ? (
               <p className="text-white/80">Loading...</p>
             ) : errorMsg ? (
