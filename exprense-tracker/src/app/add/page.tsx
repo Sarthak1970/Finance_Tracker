@@ -69,7 +69,7 @@ export default function AddTransactionPage() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:8080/transactions', {
+      const res = await fetch('https://finance-tracker-backend-ucrl.onrender.com//transactions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
